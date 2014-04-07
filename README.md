@@ -38,3 +38,9 @@ Create a local logback.xml file and typically also a properties file.
 java -Dlogback.configurationFile=logback.xml -jar target/example-1.1.1-SNAPSHOT.war
 
 ```
+
+References:
+-----------
+http://jowisoftware.de/blog/archives/26-Creating-runnable-wars-with-Maven-and-Jetty.html
+
+https://github.com/uoa-group-applications/common-runnable-war
