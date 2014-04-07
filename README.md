@@ -44,3 +44,8 @@ References:
 http://jowisoftware.de/blog/archives/26-Creating-runnable-wars-with-Maven-and-Jetty.html
 
 https://github.com/uoa-group-applications/common-runnable-war
+
+Debian Package:
+---------------
+The example https://github.com/avaje-common/example-runnable-war ... additionally uses jdeb to package the application up as a .deb with a logback.xml, properties file and init.d script.
+
