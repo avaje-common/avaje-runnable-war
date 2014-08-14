@@ -14,7 +14,7 @@
   <packaging>pom</packaging>
 
   <properties>
-   <jetty.version>9.1.4.v20140401</jetty.version>
+   <jetty.version>9.2.2.v20140723</jetty.version>
    <logback.version>1.1.2</logback.version>
    <slf4j.version>1.7.7</slf4j.version>
   </properties>
@@ -39,7 +39,7 @@
     <dependency>
       <groupId>org.avaje.jetty</groupId>
       <artifactId>avaje-jetty-runner</artifactId>
-      <version>(1.0,2]</version>
+      <version>[1.1,2]</version>
     </dependency>
 
     <!-- servlet api -->
