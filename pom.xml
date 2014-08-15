@@ -10,7 +10,7 @@
 
   <groupId>org.avaje.jetty</groupId>
   <artifactId>runnable-war</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -31,6 +31,7 @@
     <connection>scm:git:https://github.com/avaje-common/avaje-runnable-war.git</connection>
     <developerConnection>scm:git:https://github.com/avaje-common/avaje-runnable-war.git</developerConnection>
     <url>https://github.com/avaje-common/avaje-runnable-war.git</url>
+    <tag>runnable-war-1.2</tag>
   </scm>
 
   <dependencies>
