@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -14,23 +15,23 @@
   <packaging>pom</packaging>
 
   <properties>
-   <logback.version>1.1.3</logback.version>
-   <slf4j.version>1.7.12</slf4j.version>
+    <jetty.version>9.2.10.v20150310</jetty.version>
+    <logback.version>1.1.3</logback.version>
+    <slf4j.version>1.7.12</slf4j.version>
   </properties>
 
   <description>
-   Provides a parent pom that builds runnable war using jetty.
+    Provides a parent pom that builds runnable war using jetty.
 
-   This uses the "maven overlay approach" to put jetty, logging, servlet api and avaje-jetty-runner
-   into the root path of the war and a manifest entry to point to the RunWar main method. The jars 
-   included in the overlays provide a set of system classes that boot and run the war.
+    This uses the "maven overlay approach" to put jetty, logging, servlet api and avaje-jetty-runner
+    into the root path of the war and a manifest entry to point to the RunWar main method. The jars
+    included in the overlays provide a set of system classes that boot and run the war.
   </description>
 
   <scm>
     <connection>scm:git:https://github.com/avaje-common/avaje-runnable-war.git</connection>
     <developerConnection>scm:git:https://github.com/avaje-common/avaje-runnable-war.git</developerConnection>
     <url>https://github.com/avaje-common/avaje-runnable-war.git</url>
-    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
@@ -74,40 +75,46 @@
     </dependency>
 
     <!-- jetty -->
-    <!-- all these jetty dependencies are brought in via avaje-jetty-runner
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-xml</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-security</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-http</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-io</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
+      <version>${jetty.version}</version>
     </dependency>
-    -->
   </dependencies>
 
   <build>
@@ -122,45 +129,47 @@
               <mainClass>org.avaje.jettyrunner.RunWar</mainClass>
             </manifest>
           </archive>
-          <packagingExcludes>WEB-INF/lib/javax.servlet-api-*.jar,WEB-INF/lib/jetty-*.jar,WEB-INF/lib/avaje-jetty-runner-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/slf4j-api-*.jar,WEB-INF/lib/jcl-*.jar,</packagingExcludes>
+          <packagingExcludes>
+            WEB-INF/lib/javax.servlet-api-*.jar,WEB-INF/lib/jetty-*.jar,WEB-INF/lib/avaje-jetty-runner-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/slf4j-api-*.jar,WEB-INF/lib/jcl-*.jar,
+          </packagingExcludes>
           <overlays>
-	    <!-- servlet api -->
+            <!-- servlet api -->
             <overlay>
               <groupId>javax.servlet</groupId>
               <artifactId>javax.servlet-api</artifactId>
               <type>jar</type>
             </overlay>
 
-	    <!-- avaje jetty runner -->
+            <!-- avaje jetty runner -->
             <overlay>
               <groupId>org.avaje.jetty</groupId>
               <artifactId>avaje-jetty-runner</artifactId>
               <type>jar</type>
             </overlay>
 
-	    <!-- logging api and logback -->
-	    <overlay>
-	      <groupId>org.slf4j</groupId>
-	      <artifactId>slf4j-api</artifactId>
+            <!-- logging api and logback -->
+            <overlay>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-api</artifactId>
               <type>jar</type>
-	    </overlay>
-	    <overlay>
-	      <groupId>org.slf4j</groupId>
-	      <artifactId>jcl-over-slf4j</artifactId>
+            </overlay>
+            <overlay>
+              <groupId>org.slf4j</groupId>
+              <artifactId>jcl-over-slf4j</artifactId>
               <type>jar</type>
-	    </overlay>
-	    <overlay>
-	      <groupId>ch.qos.logback</groupId>
-	      <artifactId>logback-classic</artifactId>
+            </overlay>
+            <overlay>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-classic</artifactId>
               <type>jar</type>
-	    </overlay>
-	    <overlay>
-	      <groupId>ch.qos.logback</groupId>
-	      <artifactId>logback-core</artifactId>
+            </overlay>
+            <overlay>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-core</artifactId>
               <type>jar</type>
-	    </overlay>
+            </overlay>
 
-	    <!-- jetty -->
+            <!-- jetty -->
             <overlay>
               <groupId>org.eclipse.jetty</groupId>
               <artifactId>jetty-webapp</artifactId>
