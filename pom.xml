@@ -40,7 +40,7 @@
     <dependency>
       <groupId>org.avaje.jetty</groupId>
       <artifactId>avaje-jetty-runner</artifactId>
-      <version>[2.1.2-SNAPSHOT]</version>
+      <version>[2.1.1]</version>
     </dependency>
 
     <!-- servlet api -->
@@ -116,7 +116,7 @@
       <version>${jetty.version}</version>
     </dependency>
 
-    <!-- jetty webSockets -->
+    <!-- jetty webSockets support -->
     <dependency>
       <groupId>org.eclipse.jetty.websocket</groupId>
       <artifactId>javax-websocket-server-impl</artifactId>
@@ -164,7 +164,6 @@
       <version>5.0.1</version>
     </dependency>
 
-
     <dependency>
       <groupId>org.eclipse.jetty.websocket</groupId>
       <artifactId>websocket-server</artifactId>
@@ -191,7 +190,6 @@
       <artifactId>javax-websocket-client-impl</artifactId>
       <version>${jetty.version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.eclipse.jetty.websocket</groupId>
       <artifactId>websocket-client</artifactId>
@@ -205,16 +203,13 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.4</version>
+        <version>2.6</version>
         <configuration>
           <archive>
             <manifest>
               <mainClass>org.avaje.jettyrunner.RunWar</mainClass>
             </manifest>
           </archive>
-          <!--<includes>-->
-            <!--META-INF/services/*-->
-          <!--</includes>-->
           <packagingExcludes>
             WEB-INF/lib/javax.servlet-api-*.jar,WEB-INF/lib/javax.websocket-api-*.jar,WEB-INF/lib/javax-websocket-server-*.jar,WEB-INF/lib/javax-websocket-client-*.jar,WEB-INF/lib/javax.annotation-api-*.jar,WEB-INF/lib/asm*.jar,WEB-INF/lib/websocket-*.jar,WEB-INF/lib/jetty-*.jar,WEB-INF/lib/avaje-jetty-runner-*.jar,WEB-INF/lib/logback-*.jar,WEB-INF/lib/slf4j-api-*.jar,WEB-INF/lib/jcl-*.jar,
           </packagingExcludes>
@@ -299,11 +294,15 @@
 
 
 
-            <!-- jetty webSockets -->
+            <!-- jetty webSockets support -->
             <overlay>
               <groupId>org.eclipse.jetty.websocket</groupId>
               <artifactId>javax-websocket-server-impl</artifactId>
               <type>jar</type>
+              <excludes>
+                <!-- Set an exclude so that META-INF/services is included -->
+                <exclude>META-INF/maven/**</exclude>
+              </excludes>
             </overlay>
             <overlay>
               <groupId>org.eclipse.jetty</groupId>
@@ -350,6 +349,10 @@
               <groupId>org.eclipse.jetty.websocket</groupId>
               <artifactId>websocket-server</artifactId>
               <type>jar</type>
+              <excludes>
+                <!-- Set an exclude so that META-INF/services is included -->
+                <exclude>META-INF/maven/**</exclude>
+              </excludes>
             </overlay>
             <overlay>
               <groupId>org.eclipse.jetty.websocket</groupId>
@@ -371,8 +374,11 @@
               <groupId>org.eclipse.jetty.websocket</groupId>
               <artifactId>javax-websocket-client-impl</artifactId>
               <type>jar</type>
+              <excludes>
+                <!-- Set an exclude so that META-INF/services is included -->
+                <exclude>META-INF/maven/**</exclude>
+              </excludes>
             </overlay>
-
             <overlay>
               <groupId>org.eclipse.jetty.websocket</groupId>
               <artifactId>websocket-client</artifactId>
