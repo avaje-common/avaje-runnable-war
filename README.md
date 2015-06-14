@@ -18,7 +18,7 @@ In a maven project specify runnable-war as the parent pom.
   <parent>
     <groupId>org.avaje.jetty</groupId>
     <artifactId>runnable-war</artifactId>
-    <version>1.0</version>
+    <version>2.1.1</version>
   </parent>
 ```  
 
@@ -28,6 +28,8 @@ This builds the war and will insert the jetty + logging + avaje-jetty-runner cla
 It puts in a manifest entry to the avaje-jetty-runner RunWar.main() method.
 
 Assumes logback is used for logging.
+
+Version 2.1.1 introduces support for Websockets by adding the appropriate additional jetty dependencies.
 
 
 3. Run the war
